@@ -18,26 +18,23 @@
             };
     })();
 
-    //asset pre loader
-    var assetLoader = (function () {
+    var assetLoader = (function(){
 
-        //image directory
         this.images = {
-            "haswell": "images/haswell.jpg",
-            "imzadi": "images/imzadi.jpg",
-            "spritesheet": "images/spritesheet.png",
-            "bg": "images/bg.png",
-            "sky": "images/sky.png",
-            "backdrop": "images/backdrop.png",
-            "backdrop2": "images/backdrop_ground.png",
-            "grass": "images/grass.png",
-            "avatar_normal": "images/normal_walk.png"
-
+            'bg': 'imgs/bg.png',
+            'sky': 'imgs/sky.png',
+            'backdrop': 'imgs/backdrop.png',
+            'backdrop2': 'imgs/backdrop_ground.png',
+            'grass': 'imgs/grass.png',
+            'avatar_normal': 'imgs/normal_walk.png'
         };
+
         var assets_loaded = 0;
         var number_of_images = Object.keys(this.images).length;
+        console.log("number of images are::");
+        console.log(number_of_images);
 
-        this.total_number_of_images = number_of_images;
+        this.totalAssets = number_of_images;
 
         function assetLoaded(dic, name) {
             console.log(this[dic][name]);
@@ -50,14 +47,13 @@
             assets_loaded++;
             console.log("testing");
             console.log(assets_loaded);
-            console.log(this.total_number_of_images);
-            if (assets_loaded === this.total_number_of_images && typeof this.finished === "function") {
+            console.log(number_of_images);
+            if (assets_loaded === number_of_images && typeof this.finished === "function") {
                 this.finished();
             }
         }
 
-        //load all assets
-        this.downloadAll = function () {
+        this.downloadAllAssets = function(){
             var that = this;
             var source;
             //load images
@@ -80,21 +76,24 @@
 
                 }
             }
-        }
-
-
-        return {
-            imgs: this.images,
-            totalAssest: this.total_number_of_images,
-            downloadAll: this.downloadAll
         };
 
+        return {
+            images: this.images,
+            totalAssets: this.totalAssets,
+            downloadAllAssets: this.downloadAllAssets
+        }
     })();
 
     assetLoader.finished = function () {
         console.log("testing");
         startGame();
     };
+
+    console.log(assetLoader.images);
+    assetLoader.downloadAllAssets();
+    //console.log(assetLoader.downloadAll());
+    //assetLoader.downloadAll();
 
     ////all assets downloaded starting with animating the assets
     //
@@ -231,7 +230,6 @@
     //    player.anim.draw(64, 260);
     //
     //}
-    console.log(assetLoader.downloadAll());
-    assetLoader.downloadAll();
+
 })();
 
