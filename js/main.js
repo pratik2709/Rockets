@@ -22,28 +22,14 @@ var runner = (function (run) {
     function animate() {
         requestAnimFrame(animate);
         run.background.draw();
-        player.anim.update();
-        player.anim.draw(64, 50);
+
+        run.rocket.animate.update();
+        run.rocket.animate.draw(64, 50);
 
     }
 
     function startGame(){
-        // setting up the player
-        //why are we explicitly specifying width
-        //of individual sprite
-        // can also be done the other way around
-        //by specifying the number of frames explicitly
-
-        player.width = 256;
-        player.height = 256;
-        player.speed = 6;
-        player.sheet = new run.SpriteSheet("imgs/rocket.png", player.width, player.height);
-
-        //there are 2 speeds for the player
-        // 1. running speed and
-        // 2. stationary movement speed (which is handled by panning the background)
-        player.anim = new run.Animation(player.sheet, 4, 0, 4);
-
+        console.log(run.rocket.animate);
         //ground tiles?
         //initialize the background
         run.background.reset();
@@ -57,8 +43,6 @@ var runner = (function (run) {
         startGame();
     };
 
-    console.log(run);
-    console.log(run.assetLoader.images);
     run.assetLoader.downloadAllAssets();
 
 })(runner || {});
