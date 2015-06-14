@@ -1,6 +1,8 @@
-var runner = (function(run){
+// Takes in a sprite sheet and animates it
 
-    run.Animation = function(spritesheet, frameSpeed, startFrame, endFrame) {
+var runner = (function (run) {
+
+    run.Animation = function (spritesheet, frameSpeed, startFrame, endFrame) {
         var animationSequence = [];
         var currentFrame = 0;
         var counter = 0;

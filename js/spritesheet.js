@@ -1,3 +1,5 @@
+// Creates a spritesheet object
+
 var runner = (function (run) {
     run.SpriteSheet = function(path, frameWidth, frameHeight) {
         this.image = new Image();

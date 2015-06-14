@@ -1,3 +1,5 @@
+//For panning the background
+
 var runner = (function(run){
      run.background = (function () {
         var sky = {};

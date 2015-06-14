@@ -1,3 +1,5 @@
+// For loading all assets
+
 var runner = (function (run) {
 
     run.assetLoader = (function () {

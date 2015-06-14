@@ -40,11 +40,12 @@ var runner = (function (run) {
         player.sheet = new run.SpriteSheet("imgs/rocket.png", player.width, player.height);
 
         //there are 2 speeds for the player
-        // running speed and stationary movement speed
+        // 1. running speed and
+        // 2. stationary movement speed (which is handled by panning the background)
         player.anim = new run.Animation(player.sheet, 4, 0, 4);
 
         //ground tiles?
-
+        //initialize the background
         run.background.reset();
         animate();
 
