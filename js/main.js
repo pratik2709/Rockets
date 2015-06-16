@@ -21,10 +21,13 @@ var runner = (function (run) {
 
     function animate() {
         requestAnimFrame(animate);
+        ctx.clearRect(0, 0, run.initial.canvas.width, run.initial.canvas.height);
         run.background.draw();
 
         run.rocket.animate.update();
-        run.rocket.animate.draw(64, 50);
+        // decide what will be the values of x and y input depending on the keyboard input
+        run.rocket.move();
+        //run.rocket.animate.draw(64, 50);
 
     }
 
@@ -46,4 +49,6 @@ var runner = (function (run) {
     run.assetLoader.downloadAllAssets();
 
 })(runner || {});
+
+
 
