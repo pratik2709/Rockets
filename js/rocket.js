@@ -14,6 +14,14 @@ var runner = (function (run) {
         this.speed = 6;
         this.sheet = new run.SpriteSheet("imgs/rocket.png", this.width, this.height);
 
+        //bullet code
+        this.speed = 3;
+        this.bulletPool = new run.pool(30);
+        this.bulletPool.init("bullet");
+
+        var fireRate = 15; //why
+        var counter = 0;
+
         //there are 2 speeds for the rocket
         // 1. running speed and
         // 2. stationary movement speed (which is handled by panning the background)
