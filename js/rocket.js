@@ -21,15 +21,21 @@ var runner = (function (run) {
 
         var fireRate = 15; //why
         var counter = 0;
+        this.collidableWith = "enemyBullet";
+        this.type = "ship";
 
         //there are 2 speeds for the rocket
         // 1. running speed and
         // 2. stationary movement speed (which is handled by panning the background)
         this.anim = new run.Animation(this.sheet, 4, 0, 4);
 
+
+
+
         //move
         var that = this;
         this.move = function () {
+            counter++;
             //this.x =64;
             //this.y = 50;
             //this.speed = 6;
@@ -55,13 +61,23 @@ var runner = (function (run) {
 
             run.rocket.animate.draw(that.x, that.y);
 
+            if (KEY_STATUS.space && counter >= fireRate) {
+                fire();
+                counter = 0;
+            }
 
+        };
+
+        var fire = function () {
+            that.bulletPool.getTwo(that.x + 6, that.y, 3,
+                that.x + 33, that.y, 3); //change values and test
         };
 
 
         return {
             animate: this.anim,
-            move: this.move
+            move: this.move,
+            bulletPool: this.bulletPool
         }
 
     })();

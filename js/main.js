@@ -27,6 +27,8 @@ var runner = (function (run) {
         run.rocket.animate.update();
         // decide what will be the values of x and y input depending on the keyboard input
         run.rocket.move();
+        run.rocket.bulletPool.animate();
+        //console.log(run.rocket.bulletPool);
         //run.rocket.animate.draw(64, 50);
 
     }

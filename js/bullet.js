@@ -1,22 +1,11 @@
 var runner = (function (run) {
 
     run.bullet = function (object) {
-        this.init = function (x, y, width, height) {
-            this.x = x;
-            this.y = y;
-            this.width = width;
-            this.height = height;
-        };
+
         this.speed = 0;
         this.collidableWith = "";
         this.isColliding = false;
         this.type = "";
-
-
-        this.isCollidableWith = function (objects) {
-            return (this.collidableWith === this.type);
-        };
-
 
         this.width = 256;
         this.height = 256;
@@ -71,6 +60,8 @@ var runner = (function (run) {
 
 
     };
+
+        run.bullet.prototype = new run.drawable();
 
     return run
 
