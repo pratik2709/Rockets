@@ -21,7 +21,7 @@ var runner = (function (run) {
         };
 
         this.draw = function () {
-            run.initial.ctx.clearRect(this.x - 1, this.y - 1, this.width + 1, this.height + 1); //to avoid the blur ?
+            //run.initial.ctx.clearRect(this.x - 1, this.y - 1, this.width + 1, this.height + 1); //to avoid the blur ?
             this.y -= this.speed;
 
             if (this.isColliding) {

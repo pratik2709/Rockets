@@ -56,7 +56,6 @@ var runner = (function (run) {
                         that.images[image].src = source
 
                     })(that, image);
-                    console.log(run.assetLoader.images);
 
                 }
             }
