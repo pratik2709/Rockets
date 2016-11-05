@@ -22,14 +22,14 @@ var runner = (function (run) {
 
         this.draw = function () {
             //run.initial.ctx.clearRect(this.x - 1, this.y - 1, this.width + 1, this.height + 1); //to avoid the blur ?
-            this.y -= this.speed;
+            this.x += this.speed;
 
             if (this.isColliding) {
                 return true;
             }
 
 
-            if (self === "bullet" && this.y + this.height <= 0) {
+            if (self === "bullet" && this.x >= run.initial.canvas.width) {
                 return true;
             }
             else if (self === "enemyBullet" && this.y >= run.initial.canvas.height) {
