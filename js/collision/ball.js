@@ -20,8 +20,7 @@ Ball.prototype.update = function (dt) {
 
 //CHECK
 Ball.prototype.draw = function (ctx) {
-
-    ctx.fillStyle = "#000000";
+    ctx.fillStyle = "#ff0000";
     ctx.beginPath();
     ctx.arc(this.pos.x, this.pos.y, this.radius, 0, 2 * Math.PI);
     ctx.fill();
