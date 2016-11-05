@@ -13,6 +13,7 @@ var runner = (function (run) {
                     var bullet = new run.bullet("bullet");
 
                     // 2 and 14 are width and height
+                    // bullet is a rigid body
                     bullet.init(0, 0, 2, 14);
                     bullet.collidableWith = "enemy";
                     bullet.type = "bullet";
@@ -42,7 +43,6 @@ var runner = (function (run) {
                 if (pool[i].in_use) {
 
                     if (pool[i].draw()) {
-                        console.log("in use of bp");
                         pool[i].clear(); //no idea
                         pool.push((pool.splice(i, 1))[0]); //verify
                     }

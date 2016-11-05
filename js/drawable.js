@@ -26,6 +26,8 @@ var runner = (function (run) {
 
     };
 
+    run.drawable.prototype = Object.create(RigidBody.prototype);
+
     return run
 
 })(runner || {});
