@@ -45,6 +45,10 @@ var runner = (function (run) {
     console.log(runner);
     run.assetLoader.finished = function () {
         console.log("testing");
+        console.log(run.assetLoader.images.backdrop.width);
+        console.log(run.assetLoader.images.backdrop2.width);
+        console.log(run.assetLoader.images.bullet.width);
+        console.log(run.assetLoader.images.bullet.height);
         startGame();
     };
 

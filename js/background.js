@@ -7,7 +7,6 @@ var runner = (function(run){
         var backdrop2 = {};
 
         //draw backgrounds
-         console.log(run);
         this.draw = function () {
             run.initial.ctx.drawImage(run.assetLoader.images.bg, 0, 0);
 
@@ -29,9 +28,9 @@ var runner = (function(run){
             if (sky.x + sky.width <= 0) {
                 sky.x = 0;
             }
-            if (backdrop.x + run.assetLoader.images.backdrop.width <= 0)
+            if (backdrop.x + 800 <= 0)
                 backdrop.x = 0;
-            if (backdrop2.x + run.assetLoader.images.backdrop2.width <= 0)
+            if (backdrop2.x + 800 <= 0)
                 backdrop2.x = 0;
 
         };

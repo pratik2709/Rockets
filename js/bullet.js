@@ -28,6 +28,7 @@ var runner = (function (run) {
                 return true;
             }
 
+
             if (self === "bullet" && this.y + this.height <= 0) {
                 return true;
             }

@@ -27,14 +27,10 @@ var runner = (function (run) {
             console.log(this[dic][name]);
 
             if (this[dic][name].status !== 'loading') {
-                console.log("inside loading");
                 return;
             }
             this[dic][name].status = "loaded";
             assets_loaded++;
-            console.log("testing");
-            console.log(assets_loaded);
-            console.log(number_of_images);
             if (assets_loaded === number_of_images && typeof this.finished === "function") {
                 this.finished();
             }
@@ -60,6 +56,7 @@ var runner = (function (run) {
                         that.images[image].src = source
 
                     })(that, image);
+                    console.log(run.assetLoader.images);
 
                 }
             }

@@ -11,8 +11,9 @@ var runner = (function (run) {
                 for (var i = 0; i < size; i++) {
                     // Initalize the bullet object
                     var bullet = new run.bullet("bullet");
-                    bullet.init(0, 0, run.assetLoader.images.bullet.width,
-                        run.assetLoader.images.bullet.height);
+
+                    bullet.init(0, 0, 2,
+                        14);
                     bullet.collidableWith = "enemy";
                     bullet.type = "bullet";
                     pool[i] = bullet;
@@ -39,7 +40,9 @@ var runner = (function (run) {
         this.animate = function () {
             for (var i = 0; i < size; i++) {
                 if (pool[i].in_use) {
+
                     if (pool[i].draw()) {
+                        console.log("in use of bp");
                         pool[i].clear(); //no idea
                         pool.push((pool.splice(i, 1))[0]); //verify
                     }

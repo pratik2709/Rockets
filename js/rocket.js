@@ -82,6 +82,8 @@ var runner = (function (run) {
 
     })();
 
+    run.rocket.prototype = new run.drawable();
+
     return run
 
 })(runner || {});
