@@ -9,10 +9,10 @@ var runner = (function (run) {
         //by specifying the number of frames explicitly
         this.x = 64;
         this.y = 50;
-        this.width = 256;
-        this.height = 256;
+        this.width = 156;
+        this.height = 41;
         this.speed = 6;
-        this.sheet = new run.SpriteSheet("imgs/rocket.png", this.width, this.height);
+        this.sheet = new run.SpriteSheet("imgs/rocket2.png", this.width, this.height);
 
         //bullet code
         this.speed = 3;
@@ -69,8 +69,11 @@ var runner = (function (run) {
         };
 
         var fire = function () {
-            that.bulletPool.getTwo(that.x + 6, that.y, 3,
-                that.x + 33, that.y, 3); //change values and test
+            //add width to x
+            //leave y
+            console.log(run.assetLoader.images.rocket.width);
+            that.bulletPool.getTwo(that.x + that.width + 6, that.y, 3,
+                that.x + that.width + 33, that.y, 3); //change values and test
         };
 
 

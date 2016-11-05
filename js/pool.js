@@ -12,8 +12,8 @@ var runner = (function (run) {
                     // Initalize the bullet object
                     var bullet = new run.bullet("bullet");
 
-                    bullet.init(0, 0, 2,
-                        14);
+                    // 2 and 14 are width and height
+                    bullet.init(0, 0, 2, 14);
                     bullet.collidableWith = "enemy";
                     bullet.type = "bullet";
                     pool[i] = bullet;

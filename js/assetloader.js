@@ -12,7 +12,7 @@ var runner = (function (run) {
             'backdrop2': 'imgs/backdrop_ground.png',
             'grass': 'imgs/grass.png',
             'avatar_normal': 'imgs/normal_walk.png',
-            'rocket': 'imgs/rocket.png',
+            'rocket': 'imgs/rocket2.png',
             'bullet': 'imgs/bullet.png'
         };
 
