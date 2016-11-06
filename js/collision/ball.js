@@ -24,8 +24,8 @@ var runner = (function (run) {
         };
 
 //CHECK
-        this.draw = function (ctx) {
-            ctx.fillStyle = "#ff0000";
+        this.draw = function (ctx, fill) {
+            ctx.fillStyle = fill;
             ctx.beginPath();
             ctx.arc(this.pos.x, this.pos.y, this.radius, 0, 2 * Math.PI);
             ctx.fill();

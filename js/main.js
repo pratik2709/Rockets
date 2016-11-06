@@ -33,7 +33,7 @@ var runner = (function (run) {
         ctx.clearRect(0, 0, run.initial.canvas.width, run.initial.canvas.height);
 
         run.background.draw();
-        ball.draw(ctx);
+        ball.draw(ctx, "#ff0000");
         run.rocket.animate.update();
         // decide what will be the values of x and y input depending on the keyboard input
         run.rocket.move();
