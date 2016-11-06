@@ -1,6 +1,5 @@
 var runner = (function (run) {
     run.rocket = (function () {
-
         //move the rocket
         // setting up the rocket
         //why are we explicitly specifying width
@@ -71,13 +70,13 @@ var runner = (function (run) {
         var fire = function () {
             //add width to x
             //leave y
-            console.log(run.assetLoader.images.rocket.width);
             that.bulletPool.getTwo(that.x + that.width + 6, that.y, 3,
                 that.x + that.width + 33, that.y, 3); //change values and test
         };
 
 
         return {
+            //init: this.init,
             animate: this.anim,
             move: this.move,
             bulletPool: this.bulletPool

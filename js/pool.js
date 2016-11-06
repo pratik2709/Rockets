@@ -18,6 +18,7 @@ var runner = (function (run) {
                     bullet.collidableWith = "enemy";
                     bullet.type = "bullet";
                     pool[i] = bullet;
+                    run.initial.myObjects.push(bullet);
                 }
             }
 

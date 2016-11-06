@@ -6,7 +6,8 @@ var runner = (function (run) {
         player: {},
         ground: [],
         platformWidth: 32,
-        platformHeight: this.canvas.height - this.platformWidth * 4
+        platformHeight: this.canvas.height - this.platformWidth * 4,
+        myObjects: []
     };
     return run
 })(runner || {});

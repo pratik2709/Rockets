@@ -1,90 +1,106 @@
-var Ball = function (_mass, _rad, _pos, _vel) {
-    RigidBody.call(this, _mass, _rad, _rad, _pos, _vel)
-    this.radius = _rad;
-};
+var runner = (function (run) {
 
-Ball.prototype = Object.create(Ball.prototype);
-Ball.prototype.constructor = Ball;
+    run.ball = function (_mass, _rad, _pos, _vel) {
 
-Ball.prototype.update = function (dt) {
-    RigidBody.prototype.setGravity.call(this);
-    RigidBody.prototype.update.call(this, dt);
+        var that_ball = this;
+        //var Ball = function (_mass, _rad, _pos, _vel) {
+            RigidBody.call(this, _mass, _rad, _rad, _pos, _vel);
+            this.radius = _rad;
+        //};
 
-    // random values presented here
-    // not analysing
-    if (this.pos.x > window.innerWidth || this.pos.x < 0 || this.pos.y + this.radius * 2 > window.innerHeight || this.pos.y < 0) {
-        this.change_vel();
-    }
+        //Ball.prototype = Object.create(Ball.prototype);
+        //Ball.prototype.constructor = Ball;
 
-};
+        this.update = function (dt) {
+            RigidBody.prototype.setGravity.call(this);
+            RigidBody.prototype.update.call(this, dt);
+
+            // random values presented here
+            // not analysing
+            if (this.pos.x > window.innerWidth || this.pos.x < 0 || this.pos.y + this.radius * 2 > window.innerHeight || this.pos.y < 0) {
+                this.change_vel();
+            }
+
+        };
 
 //CHECK
-Ball.prototype.draw = function (ctx) {
-    ctx.fillStyle = "#ff0000";
-    ctx.beginPath();
-    ctx.arc(this.pos.x, this.pos.y, this.radius, 0, 2 * Math.PI);
-    ctx.fill();
+        this.draw = function (ctx) {
+            ctx.fillStyle = "#ff0000";
+            ctx.beginPath();
+            ctx.arc(this.pos.x, this.pos.y, this.radius, 0, 2 * Math.PI);
+            ctx.fill();
 
 
-
-};
+        };
 
 //write a method which bounces of the ball from the wall
-Ball.prototype.change_vel = function () {
-  this.vel.x = -this.vel.x;
-  this.vel.y = -this.vel.y;
-  //this.vel = new Vector2();
-};
-
+        this.change_vel = function () {
+            this.vel.x = -this.vel.x;
+            this.vel.y = -this.vel.y;
+            //this.vel = new Vector2();
+        };
 
 
 //change and watch
-Ball.prototype.reset = function () {
-    this.pos = new Vector2(window.innerWidth / 2 - 100 + 200 * Math.random(), -this.radius * 2 - 400 * Math.random());
-    this.vel = new Vector2();
-};
+        this.reset = function () {
+            this.pos = new Vector2(window.innerWidth / 2 - 100 + 200 * Math.random(), -this.radius * 2 - 400 * Math.random());
+            this.vel = new Vector2();
+        };
 
 
-Ball.prototype.getClosestPoints = function(rBody){
-    var contacts = [];
-    var ballA = this;
+        this.getClosestPoints = function (rBody) {
+            console.log(typeof run.bullet);
+            console.log(rBody instanceof  run.bullet);
+            var contacts = [];
+            var ballA = this;
 
-    if(rBody instanceof  Ball){
-        var ballB = rBody;
+            if (rBody instanceof  run.ball) {
+                var ballB = rBody;
 
-        var delta = new Vector2(ballB.pos.x - ballA.pos.x, ballB.pos.y - ballA.pos.y);
+                var delta = new Vector2(ballB.pos.x - ballA.pos.x, ballB.pos.y - ballA.pos.y);
 
-        var n;
+                var n;
 
-        if(delta.getLength()){
-            n = delta.getNormal();
-        }
-        else {
-            n = new Vector2(1, 0);
-        }
+                if (delta.getLength()) {
+                    n = delta.getNormal();
+                }
+                else {
+                    n = new Vector2(1, 0);
+                }
 
-        var pa = new Vector2();
-        pa.x = ballA.pos.x + n.x * ballA.radius;
-        pa.y = ballA.pos.y + n.y * ballA.radius;
+                var pa = new Vector2();
+                pa.x = ballA.pos.x + n.x * ballA.radius;
+                pa.y = ballA.pos.y + n.y * ballA.radius;
 
-        var pb = new Vector2();
-        pb.x = ballB.pos.x - n.x * ballA.radius;
-        pb.y = ballB.pos.y - n.y * ballA.radius;
+                var pb = new Vector2();
+                pb.x = ballB.pos.x - n.x * ballA.radius;
+                pb.y = ballB.pos.y - n.y * ballA.radius;
 
-        var dist = delta.getLength() - (ballA.radius + ballB.radius);
+                var dist = delta.getLength() - (ballA.radius + ballB.radius);
 
-        contacts.push(new Contact(ballA, ballB, pa, pb, n, dist));
+                contacts.push(new Contact(ballA, ballB, pa, pb, n, dist));
 
-    }
-    else if(rBody instanceof Floor){
-        var rectangleB = rBody;
+            }
+            else if (rBody instanceof run.bullet) {
+                console.log("here");
+                var rectangleB = rBody;
 
-        contacts = rectangleB.getClosestPoints(this);
-        utils.flipContacts(contacts);
+                contacts = rectangleB.getClosestPoints(this);
+                utils.flipContacts(contacts);
 
-    } else {
-        console.error("===== NO getClosestPoints IN Ball =====");
-    }
+            } else {
+                console.error("===== NO getClosestPoints IN Ball =====");
+            }
 
-    return contacts;
-};
+            return contacts;
+        };
+
+
+    };
+
+
+    return run
+
+})(runner || {});
+
+
