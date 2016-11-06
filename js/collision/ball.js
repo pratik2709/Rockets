@@ -49,8 +49,7 @@ var runner = (function (run) {
 
 
         this.getClosestPoints = function (rBody) {
-            console.log(typeof run.bullet);
-            console.log(rBody instanceof  run.bullet);
+
             var contacts = [];
             var ballA = this;
 
@@ -77,7 +76,8 @@ var runner = (function (run) {
                 pb.y = ballB.pos.y - n.y * ballA.radius;
 
                 var dist = delta.getLength() - (ballA.radius + ballB.radius);
-
+                console.log("hereball");
+                console.log(dist);
                 contacts.push(new Contact(ballA, ballB, pa, pb, n, dist));
 
             }

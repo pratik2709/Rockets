@@ -18,13 +18,11 @@ var runner = (function (run) {
 
         var assets_loaded = 0;
         var number_of_images = Object.keys(this.images).length;
-        console.log("number of images are::");
-        console.log(number_of_images);
+
 
         this.totalAssets = number_of_images;
 
         function assetLoaded(dic, name) {
-            console.log(this[dic][name]);
 
             if (this[dic][name].status !== 'loading') {
                 return;
@@ -50,7 +48,6 @@ var runner = (function (run) {
                         that.images[image].name = image;
                         that.images[image].onload = function () {
                             //wierd passing string
-                            console.log("inside onload function");
                             assetLoaded.call(that, "images", image)
                         };
                         that.images[image].src = source

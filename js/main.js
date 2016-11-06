@@ -41,7 +41,7 @@ var runner = (function (run) {
         //console.log(run.rocket.bulletPool);
         //run.rocket.animate.draw(64, 50);
         var contacts = collide();
-        console.log(contacts);
+        //console.log(contacts);
 
     }
 
@@ -74,11 +74,6 @@ var runner = (function (run) {
     }
 
     run.assetLoader.finished = function () {
-        console.log("testing");
-        console.log(run.assetLoader.images.backdrop.width);
-        console.log(run.assetLoader.images.backdrop2.width);
-        console.log(run.assetLoader.images.bullet.width);
-        console.log(run.assetLoader.images.bullet.height);
         startGame();
     };
 

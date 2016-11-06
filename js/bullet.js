@@ -17,15 +17,24 @@ var runner = (function (run) {
         this.init = function (x, y, width, height) {
 
             RigidBody.call(that, 0, this.width, this.height, new Vector2(x, y), new Vector2(0, 0));
+
+            this.thetaVelocity = 0;
+            this.theta = 0;
+            this.matrix = new Matrix();
+            this.matrix.set(this.theta, 0, 0);
+
+            this.halfExtendMinus = new Vector2(-width / 2, -height / 2);
+            this.halfExtendPlus = new Vector2(width / 2, height / 2);
             this.x = x;
             this.y = y;
+
             this.width = width;
             this.height = height;
         };
 
 
         this.spawn = function (x, y, speed) {
-
+            //RigidBody.call(that, 0, this.width, this.height, new Vector2(x, y), new Vector2(0, 0));
             this.thetaVelocity = 0;
             this.theta = 0;
             this.matrix = new Matrix();
@@ -36,6 +45,8 @@ var runner = (function (run) {
 
             this.x = x;
             this.y = y;
+            this.pos.x = x;
+            this.pos.y = y;
             this.speed = speed;
             this.in_use = true;
 
@@ -44,6 +55,7 @@ var runner = (function (run) {
         this.draw = function () {
             //run.initial.ctx.clearRect(this.x - 1, this.y - 1, this.width + 1, this.height + 1); //to avoid the blur ?
             this.x += this.speed;
+            this.pos.x += this.speed;
 
             if (this.isColliding) {
                 return true;
@@ -68,6 +80,8 @@ var runner = (function (run) {
         this.clear = function () {
             this.x = 0;
             this.y = 0;
+            this.pos.x = 0;
+            this.pos.y = 0;
             this.speed = 0;
             this.in_use = false;
             this.isColliding = false;
@@ -78,7 +92,7 @@ var runner = (function (run) {
             var contacts = [];
 
             if (rigidBody instanceof  run.ball) {
-                var rectangleA = this;
+                var rectangleA = that;
                 var ballB = rigidBody;
 
                 var xPosition = ballB.pos.x - rectangleA.pos.x;
@@ -116,6 +130,13 @@ var runner = (function (run) {
                 this.d = distance;
                 this.pb = pb;
 
+                //console.log("here");
+                //console.log(that.x);
+
+                //console.log(distance_between_circle_and_obb);
+                if(distance_between_circle_and_obb <= 0){
+                    console.log("heppen");
+                }
                 contacts.push(new Contact(rectangleA, ballB, pa, pb, normal, distance_between_circle_and_obb));
 
             }
