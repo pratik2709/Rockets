@@ -18,12 +18,13 @@ var runner = (function(run){
             //loop for side by side effect
             run.initial.ctx.save();
             run.initial.ctx.rotate(run.rocket.theta.angle);
-            run.initial.ctx.drawImage(run.assetLoader.images.backdrop, that.backdrop.x + that.rot1, that.backdrop.y);
+            run.initial.ctx.drawImage(run.assetLoader.images.backdrop, that.backdrop.x, that.backdrop.y);
             run.initial.ctx.drawImage(run.assetLoader.images.backdrop, that.backdrop.x + run.initial.canvas.width, that.backdrop.y + run.initial.canvas.height);
-            //run.initial.ctx.drawImage(run.assetLoader.images.backdrop, that.backdrop.x - run.initial.canvas.width, that.backdrop.y - run.initial.canvas.height);
-            run.initial.ctx.drawImage(run.assetLoader.images.backdrop, that.backdrop.x + run.initial.canvas.width, that.backdrop.y);
+            run.initial.ctx.drawImage(run.assetLoader.images.backdrop, that.backdrop.x - run.initial.canvas.width, that.backdrop.y);
+            run.initial.ctx.drawImage(run.assetLoader.images.backdrop, that.backdrop.x, that.backdrop.y - run.initial.canvas.height);
+            run.initial.ctx.drawImage(run.assetLoader.images.backdrop, that.backdrop.x - run.initial.canvas.width, that.backdrop.y - run.initial.canvas.height);
+
             run.initial.ctx.drawImage(run.assetLoader.images.backdrop, that.backdrop.x , that.backdrop.y + run.initial.canvas.height);
-            //run.initial.ctx.drawImage(run.assetLoader.images.backdrop, that.backdrop.x , that.backdrop.y - run.initial.canvas.height);
             run.initial.ctx.drawImage(run.assetLoader.images.backdrop, that.backdrop.x - run.initial.canvas.width, that.backdrop.y);
             run.initial.ctx.restore();
 

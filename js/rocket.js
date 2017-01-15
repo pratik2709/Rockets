@@ -6,8 +6,8 @@ var runner = (function (run) {
         //of individual sprite
         // can also be done the other way around
         //by specifying the number of frames explicitly
-        this.x = 64;
-        this.y = 50;
+        this.x = 200;
+        this.y = 150;
         this.width = 156;
         this.height = 41;
         this.speed = 6;
@@ -73,8 +73,8 @@ var runner = (function (run) {
         var fire = function () {
             //add width to x
             //leave y
-            that.bulletPool.getTwo(that.x + that.width + 6, that.y, 3,
-                that.x + that.width + 33, that.y, 3); //change values and test
+            that.bulletPool.getTwo(that.x + that.width + 10, that.y, 3,
+                that.x + that.width + 10, that.y + that.height/2, 3); //change values and test
         };
 
 

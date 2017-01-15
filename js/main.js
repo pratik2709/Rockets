@@ -25,7 +25,7 @@ var runner = (function (run) {
         ctx.clearRect(0, 0, run.initial.canvas.width, run.initial.canvas.height);
 
         run.background.draw();
-        ball.draw(ctx, "#ff0000");
+        //ball.draw(ctx, "#ff0000");
         run.rocket.animate.update();
         run.rocket.move();
         run.rocket.bulletPool.animate();

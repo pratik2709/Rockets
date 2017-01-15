@@ -70,7 +70,13 @@ var runner = (function (run) {
             }
             else {
                 if (self === "bullet") {
+                    //run.initial.ctx.save();
+                    //run.initial.ctx.translate(this.x + run.assetLoader.images.bullet.width / 2, this.y + run.assetLoader.images.bullet.height / 2);
+                    //run.initial.ctx.rotate(run.rocket.theta.angle);
+                    //
+                    ////run.initial.ctx.translate(run.assetLoader.images.bullet.width/2, run.assetLoader.images.bullet.height/2);
                     run.initial.ctx.drawImage(run.assetLoader.images.bullet, this.x, this.y);
+                    run.initial.ctx.restore();
                 }
                 return false;
             }
@@ -134,10 +140,10 @@ var runner = (function (run) {
                 //console.log(that.x);
 
                 //console.log(distance_between_circle_and_obb);
-                if(distance_between_circle_and_obb <= 0){
+                if (distance_between_circle_and_obb <= 0) {
                     ballB.draw(run.initial.ctx, "#00ff00");
                 }
-                else{
+                else {
                 }
                 contacts.push(new Contact(rectangleA, ballB, pa, pb, normal, distance_between_circle_and_obb));
 
