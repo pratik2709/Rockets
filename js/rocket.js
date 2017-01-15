@@ -30,7 +30,7 @@ var runner = (function (run) {
 
         this.thetaVelocity = 0;
         //setVelTheta(-5 / 60 * Math.PI);
-        this.theta = 0;
+        this.theta = {angle: 0};
         this.matrix = new Matrix();
         this.matrix.set(this.theta, 0, 0);
 
@@ -39,21 +39,14 @@ var runner = (function (run) {
         var that = this;
         this.move = function () {
             counter++;
-            //this.x =64;
-            //this.y = 50;
-            //this.speed = 6;
-            //if(KEY_STATUS.right || KEY_STATUS.left){
-            //    //rocket moved, erase current image
-            //    run.initial.ctx.clearRect(64,that.y,that.width, that.height);
-            //}
 
             if (KEY_STATUS.right) {
-                that.theta += (-0.5 / 60 * Math.PI);
-                that.matrix.set(that.theta, 0, 0);
+                that.theta.angle += (-0.5 / 60 * Math.PI);
+                that.matrix.set(that.theta.angle, 0, 0);
             }
             if (KEY_STATUS.left) {
-                that.theta -= (-0.5 / 60 * Math.PI);
-                that.matrix.set(that.theta, 0, 0);
+                that.theta.angle -= (-0.5 / 60 * Math.PI);
+                that.matrix.set(that.theta.angle, 0, 0);
             }
             if (KEY_STATUS.up) {
                 run.background.increase();
@@ -89,7 +82,8 @@ var runner = (function (run) {
             //init: this.init,
             animate: this.anim,
             move: this.move,
-            bulletPool: this.bulletPool
+            bulletPool: this.bulletPool,
+            theta: that.theta
         }
 
     })();

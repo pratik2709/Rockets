@@ -17,7 +17,7 @@ var runner = (function(run){
 
             //loop for side by side effect
             run.initial.ctx.save();
-            run.initial.ctx.rotate(that.rot1);
+            run.initial.ctx.rotate(run.rocket.theta.angle);
             run.initial.ctx.drawImage(run.assetLoader.images.backdrop, that.backdrop.x + that.rot1, that.backdrop.y);
             run.initial.ctx.drawImage(run.assetLoader.images.backdrop, that.backdrop.x + run.initial.canvas.width, that.backdrop.y + run.initial.canvas.height);
             //run.initial.ctx.drawImage(run.assetLoader.images.backdrop, that.backdrop.x - run.initial.canvas.width, that.backdrop.y - run.initial.canvas.height);
@@ -27,7 +27,6 @@ var runner = (function(run){
             run.initial.ctx.drawImage(run.assetLoader.images.backdrop, that.backdrop.x - run.initial.canvas.width, that.backdrop.y);
             run.initial.ctx.restore();
 
-             console.log(that.backdrop.x);
             if (that.backdrop.x + 800 <= 0)
                 that.backdrop.x = 0;
 
