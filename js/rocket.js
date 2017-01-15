@@ -56,11 +56,11 @@ var runner = (function (run) {
                 that.matrix.set(that.theta, 0, 0);
             }
             if (KEY_STATUS.up) {
-                console.log(run.background.increase());
+                run.background.increase();
 
             }
             if (KEY_STATUS.down) {
-                console.log(run.background.decrement());
+                run.background.decrement();
 
             }
 

@@ -135,11 +135,9 @@ var runner = (function (run) {
 
                 //console.log(distance_between_circle_and_obb);
                 if(distance_between_circle_and_obb <= 0){
-                    console.log("heppen");
                     ballB.draw(run.initial.ctx, "#00ff00");
                 }
                 else{
-                    console.log("passed");
                 }
                 contacts.push(new Contact(rectangleA, ballB, pa, pb, normal, distance_between_circle_and_obb));
 

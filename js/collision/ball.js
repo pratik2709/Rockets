@@ -76,20 +76,16 @@ var runner = (function (run) {
                 pb.y = ballB.pos.y - n.y * ballA.radius;
 
                 var dist = delta.getLength() - (ballA.radius + ballB.radius);
-                console.log("hereball");
-                console.log(dist);
                 contacts.push(new Contact(ballA, ballB, pa, pb, n, dist));
 
             }
             else if (rBody instanceof run.bullet) {
-                console.log("here");
                 var rectangleB = rBody;
 
                 contacts = rectangleB.getClosestPoints(this);
                 utils.flipContacts(contacts);
 
             } else {
-                console.error("===== NO getClosestPoints IN Ball =====");
             }
 
             return contacts;

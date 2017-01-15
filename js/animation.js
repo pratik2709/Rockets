@@ -23,7 +23,6 @@ var runner = (function (run) {
         };
 
         this.draw = function (x, y, theta) {
-            console.log(theta);
             // get the row and col of the frame
             run.initial.ctx.save();
             var row = Math.floor(animationSequence[currentFrame] / spritesheet.framesPerRow);
