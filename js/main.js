@@ -1,20 +1,12 @@
 var runner = (function (run) {
 
-    // initialize the canvas
     var canvas = document.getElementById("canvas");
     var ctx = canvas.getContext("2d");
-    var player = {};
-    var ground = [];
-    var platformWidth = 32;
-    var platformHeight = canvas.height - platformWidth * 4;
 
     var ballRad = 50;
     var posX = 500;
     var posY = 300;
     var ball = new run.ball(ballRad * ballRad, ballRad, new Vector2(posX, posY), new Vector2(0, 0));
-
-    //var rocket = run.rocket.init();
-    //console.log(run.rocket);
 
 
     var requestAnimFrame = (function () {
@@ -35,24 +27,14 @@ var runner = (function (run) {
         run.background.draw();
         ball.draw(ctx, "#ff0000");
         run.rocket.animate.update();
-        // decide what will be the values of x and y input depending on the keyboard input
         run.rocket.move();
         run.rocket.bulletPool.animate();
-        //console.log(run.rocket.bulletPool);
-        //run.rocket.animate.draw(64, 50);
         var contacts = collide();
-        //console.log(contacts);
 
     }
 
     function startGame() {
-
-        //console.log(run.rocket.animate);
         run.initial.myObjects.push(ball);
-        //mObjects.push(run.rocket.bulletPool);
-
-        //ground tiles?
-        //initialize the background
         run.background.reset();
         animate();
 

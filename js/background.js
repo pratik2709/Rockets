@@ -3,6 +3,7 @@
 var runner = (function(run){
      run.background = (function () {
         this.backdrop = {x:0, y:0, speed:0.4};
+         this.rot1 = -10 * Math.PI/180;
 
         //draw backgrounds
         var that = this;
@@ -15,17 +16,25 @@ var runner = (function(run){
             that.backdrop.x -= that.backdrop.speed;
 
             //loop for side by side effect
-            run.initial.ctx.drawImage(run.assetLoader.images.backdrop, that.backdrop.x, that.backdrop.y);
+            run.initial.ctx.save();
+            run.initial.ctx.rotate(that.rot1);
+            run.initial.ctx.drawImage(run.assetLoader.images.backdrop, that.backdrop.x + that.rot1, that.backdrop.y);
+            run.initial.ctx.drawImage(run.assetLoader.images.backdrop, that.backdrop.x + run.initial.canvas.width, that.backdrop.y + run.initial.canvas.height);
+            //run.initial.ctx.drawImage(run.assetLoader.images.backdrop, that.backdrop.x - run.initial.canvas.width, that.backdrop.y - run.initial.canvas.height);
             run.initial.ctx.drawImage(run.assetLoader.images.backdrop, that.backdrop.x + run.initial.canvas.width, that.backdrop.y);
-            //run.initial.ctx.drawImage(run.assetLoader.images.backdrop, that.backdrop.x , that.backdrop.y + run.initial.canvas.height);
+            run.initial.ctx.drawImage(run.assetLoader.images.backdrop, that.backdrop.x , that.backdrop.y + run.initial.canvas.height);
+            //run.initial.ctx.drawImage(run.assetLoader.images.backdrop, that.backdrop.x , that.backdrop.y - run.initial.canvas.height);
             run.initial.ctx.drawImage(run.assetLoader.images.backdrop, that.backdrop.x - run.initial.canvas.width, that.backdrop.y);
+            run.initial.ctx.restore();
 
-
+             console.log(that.backdrop.x);
             if (that.backdrop.x + 800 <= 0)
                 that.backdrop.x = 0;
-            console.log(that.backdrop.x);
+
             if (that.backdrop.x  >= 800)
                 that.backdrop.x = 0;
+            //if (that.backdrop.y  >= 480)
+            //    that.backdrop.y = 0;
 
         };
 
