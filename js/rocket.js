@@ -28,7 +28,11 @@ var runner = (function (run) {
         // 2. stationary movement speed (which is handled by panning the background)
         this.anim = new run.Animation(this.sheet, 4, 0, 4);
 
-
+        this.thetaVelocity = 0;
+        //setVelTheta(-5 / 60 * Math.PI);
+        this.theta = 0;
+        this.matrix = new Matrix();
+        this.matrix.set(this.theta, 0, 0);
 
 
         //move
@@ -43,28 +47,34 @@ var runner = (function (run) {
             //    run.initial.ctx.clearRect(64,that.y,that.width, that.height);
             //}
 
+            if (KEY_STATUS.right) {
+                that.theta += (-0.5 / 60 * Math.PI);
+                that.matrix.set(that.theta, 0, 0);
+            }
+            if (KEY_STATUS.left) {
+                that.theta -= (-0.5 / 60 * Math.PI);
+                that.matrix.set(that.theta, 0, 0);
+            }
             if (KEY_STATUS.up) {
-                that.y -= that.speed;
+                console.log(run.background.increase());
 
-                if (that.y <= -(run.initial.canvas.height * 0.5)) {
-                    that.y = 0;
-                }
             }
             if (KEY_STATUS.down) {
-                that.y += that.speed;
+                console.log(run.background.decrement());
 
-                if (that.y >= run.initial.canvas.height) {
-                    that.y = run.initial.canvas.height * 0.5;
-                }
             }
 
-            run.rocket.animate.draw(that.x, that.y);
+            run.rocket.animate.draw(that.x, that.y, that.theta);
 
             if (KEY_STATUS.space && counter >= fireRate) {
                 fire();
                 counter = 0;
             }
 
+        };
+
+        var setVelTheta = function (val) {
+            that.thetaVelocity = val;
         };
 
         var fire = function () {

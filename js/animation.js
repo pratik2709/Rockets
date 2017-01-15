@@ -22,11 +22,17 @@ var runner = (function (run) {
             counter = (counter + 1) % frameSpeed;
         };
 
-        this.draw = function (x, y) {
+        this.draw = function (x, y, theta) {
+            console.log(theta);
             // get the row and col of the frame
+            run.initial.ctx.save();
             var row = Math.floor(animationSequence[currentFrame] / spritesheet.framesPerRow);
             var col = Math.floor(animationSequence[currentFrame] % spritesheet.framesPerRow);
-            run.initial.ctx.drawImage(spritesheet.image, col * spritesheet.frameWidth, row * spritesheet.frameHeight, spritesheet.frameWidth, spritesheet.frameHeight, x, y, spritesheet.frameWidth, spritesheet.frameHeight);
+            run.initial.ctx.translate(x, y);
+            run.initial.ctx.translate(spritesheet.frameWidth/2, spritesheet.frameHeight/2);
+            run.initial.ctx.rotate(theta);
+            run.initial.ctx.drawImage(spritesheet.image, col * spritesheet.frameWidth, row * spritesheet.frameHeight, spritesheet.frameWidth, spritesheet.frameHeight, x, y, -spritesheet.frameWidth, -spritesheet.frameHeight);
+            run.initial.ctx.restore();
         };
     };
 
