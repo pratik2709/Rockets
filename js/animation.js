@@ -27,10 +27,12 @@ var runner = (function (run) {
             run.initial.ctx.save();
             var row = Math.floor(animationSequence[currentFrame] / spritesheet.framesPerRow);
             var col = Math.floor(animationSequence[currentFrame] % spritesheet.framesPerRow);
-            run.initial.ctx.translate(x, y);
-            run.initial.ctx.translate(spritesheet.frameWidth/2, spritesheet.frameHeight/2);
+            //run.initial.ctx.translate(x, y);
+            console.log( spritesheet.frameWidth/2, spritesheet.frameHeight/2);
+            run.initial.ctx.translate(x + spritesheet.frameWidth/2, y + spritesheet.frameHeight/2);
             run.initial.ctx.rotate(theta.angle);
-            run.initial.ctx.drawImage(spritesheet.image, col * spritesheet.frameWidth, row * spritesheet.frameHeight, spritesheet.frameWidth, spritesheet.frameHeight, x, y, -spritesheet.frameWidth, -spritesheet.frameHeight);
+
+            run.initial.ctx.drawImage(spritesheet.image, col * spritesheet.frameWidth, row * spritesheet.frameHeight, spritesheet.frameWidth, spritesheet.frameHeight, -spritesheet.frameWidth/2, -spritesheet.frameHeight/2, spritesheet.frameWidth, spritesheet.frameHeight);
             run.initial.ctx.restore();
         };
     };

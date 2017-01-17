@@ -70,9 +70,9 @@ var runner = (function (run) {
             }
             else {
                 if (self === "bullet") {
-                    //run.initial.ctx.save();
+                    run.initial.ctx.save();
                     //run.initial.ctx.translate(this.x + run.assetLoader.images.bullet.width / 2, this.y + run.assetLoader.images.bullet.height / 2);
-                    //run.initial.ctx.rotate(run.rocket.theta.angle);
+                    run.initial.ctx.rotate(run.rocket.theta.angle);
                     //
                     ////run.initial.ctx.translate(run.assetLoader.images.bullet.width/2, run.assetLoader.images.bullet.height/2);
                     run.initial.ctx.drawImage(run.assetLoader.images.bullet, this.x, this.y);

@@ -3,7 +3,6 @@
 var runner = (function(run){
      run.background = (function () {
         this.backdrop = {x:0, y:0, speed:0.4};
-         this.rot1 = -10 * Math.PI/180;
 
         //draw backgrounds
         var that = this;
@@ -13,19 +12,21 @@ var runner = (function(run){
             //pan background
             //moving (less than 0) to left
             //add direction according to where the rocket is pointing
-            that.backdrop.x -= that.backdrop.speed;
+            //that.backdrop.x -= that.backdrop.speed;
 
             //loop for side by side effect
             run.initial.ctx.save();
+            run.initial.ctx.translate(that.backdrop.x + run.assetLoader.images.backdrop.width/2,that.backdrop.y + run.assetLoader.images.backdrop.height/2);
             run.initial.ctx.rotate(run.rocket.theta.angle);
-            run.initial.ctx.drawImage(run.assetLoader.images.backdrop, that.backdrop.x, that.backdrop.y);
-            run.initial.ctx.drawImage(run.assetLoader.images.backdrop, that.backdrop.x + run.initial.canvas.width, that.backdrop.y + run.initial.canvas.height);
-            run.initial.ctx.drawImage(run.assetLoader.images.backdrop, that.backdrop.x - run.initial.canvas.width, that.backdrop.y);
-            run.initial.ctx.drawImage(run.assetLoader.images.backdrop, that.backdrop.x, that.backdrop.y - run.initial.canvas.height);
-            run.initial.ctx.drawImage(run.assetLoader.images.backdrop, that.backdrop.x - run.initial.canvas.width, that.backdrop.y - run.initial.canvas.height);
 
-            run.initial.ctx.drawImage(run.assetLoader.images.backdrop, that.backdrop.x , that.backdrop.y + run.initial.canvas.height);
-            run.initial.ctx.drawImage(run.assetLoader.images.backdrop, that.backdrop.x - run.initial.canvas.width, that.backdrop.y);
+            run.initial.ctx.drawImage(run.assetLoader.images.backdrop, -run.assetLoader.images.backdrop.width/2, -run.assetLoader.images.backdrop.height/2);
+            //run.initial.ctx.drawImage(run.assetLoader.images.backdrop, that.backdrop.x + run.initial.canvas.width, that.backdrop.y + run.initial.canvas.height);
+            //run.initial.ctx.drawImage(run.assetLoader.images.backdrop, that.backdrop.x - run.initial.canvas.width, that.backdrop.y);
+            //run.initial.ctx.drawImage(run.assetLoader.images.backdrop, that.backdrop.x, that.backdrop.y - run.initial.canvas.height);
+            //run.initial.ctx.drawImage(run.assetLoader.images.backdrop, that.backdrop.x - run.initial.canvas.width, that.backdrop.y - run.initial.canvas.height);
+            //
+            //run.initial.ctx.drawImage(run.assetLoader.images.backdrop, that.backdrop.x , that.backdrop.y + run.initial.canvas.height);
+            //run.initial.ctx.drawImage(run.assetLoader.images.backdrop, that.backdrop.x - run.initial.canvas.width, that.backdrop.y);
             run.initial.ctx.restore();
 
             if (that.backdrop.x + 800 <= 0)
