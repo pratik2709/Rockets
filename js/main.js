@@ -3,32 +3,33 @@
 //var platformWidth = 32;
 //var platformHeight = canvas.height - platformWidth * 4;
 //
-//var ballRad = 50;
-//var posX = 500;
-//var posY = 300;
-//var ball = new run.ball(ballRad * ballRad, ballRad, new Vector2(posX, posY), new Vector2(0, 0));
-//
-//
-//function animate() {
-//    requestAnimFrame(animate);
-//    ctx.clearRect(0, 0, run.initial.canvas.width, run.initial.canvas.height);
-//
-//    run.background.draw();
-//    ball.draw(ctx, "#ff0000");
-//    run.rocket.animate.update();
-//    run.rocket.move();
-//    run.rocket.bulletPool.animate();
-//    var contacts = collide();
-//
-//}
-//
-//function startGame() {
-//
-//    run.initial.myObjects.push(ball);
-//    run.background.reset();
-//    animate();
-//
-//}
+var ballRad = 50;
+var posX = 500;
+var posY = 300;
+var ball_object = new ball(ballRad * ballRad, ballRad, new Vector2(posX, posY), new Vector2(0, 0));
+
+
+function animate() {
+    console.log("test");
+    //requestAnimFrame(animate);
+    //ctx.clearRect(0, 0, initial.canvas.width, initial.canvas.height);
+    //
+    //background.draw();
+    //ball.draw(ctx, "#ff0000");
+    //run.rocket.animate.update();
+    //run.rocket.move();
+    //run.rocket.bulletPool.animate();
+    //var contacts = collide();
+
+}
+
+function startGame() {
+
+    initial.myObjects.push(ball_object);
+    background.reset();
+    animate();
+
+}
 //
 //function collide() {
 //    var contacts = [];
