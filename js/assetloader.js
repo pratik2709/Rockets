@@ -45,7 +45,6 @@ var assetLoader = (function () {
                     that.images[image].status = "loading";
                     that.images[image].name = image;
                     that.images[image].onload = function () {
-                        //wierd passing string
                         assetLoaded.call(that, "images", image)
                     };
                     that.images[image].src = source
