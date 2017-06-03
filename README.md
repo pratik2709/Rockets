@@ -7,7 +7,7 @@ This is basically an experiment with Game Programming using JavaScript. It uses 
 * Run this by opening the index.html in any modern browser
 
 ## License
-This Demo is released under the MIT license.
+This Demo is released under the [MIT license](license.md).
 
 ## Acknowledgments and Sources
 This code is based on the following sources:
