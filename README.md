@@ -1,7 +1,7 @@
 # Rockets
 
 ## Introduction
-This is basically an experiment with Game Programming using JavaScript. It uses [Speculative Contacts](https://github.com/pratik2709/Speculative-Contacts) as the collision detection technique.
+This is basically an experiment with Game Programming using JavaScript. It uses [Speculative Contacts](https://github.com/pratik2709/Speculative-Contacts) for collision detection.
 
 ## How to run this code ?
 * Run this by opening the index.html in any modern browser
